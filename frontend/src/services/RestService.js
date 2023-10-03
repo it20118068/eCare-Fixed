@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const USER_BASE_URL = "http://localhost:8885/eCare_backend";
+const USER_BASE_URL = "http://localhost:8885";
 
 
 class RestService {
@@ -29,10 +29,10 @@ class RestService {
 
     getAllPharmaciesAndMedicines(token, requestDto){
         const config = {
-            headers: { 
-                'Access-Control-Allow-Origin': "*", 
-                'Authorization': 'Bearer ' + token 
-            }
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true 
         }
         return axios.post(USER_BASE_URL+'/user/getAllPharmaciesAndMedicines',requestDto, config);
     }
@@ -135,7 +135,7 @@ class RestService {
 //------------------Bhashitha-------------------------//
 
     register(userDto) {
-        return axios.post(USER_BASE_URL + '/register',userDto)
+        return axios.post(USER_BASE_URL + '/registration',userDto)
     }
 
     authenticateUser(username, password) {

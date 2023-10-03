@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import sliit.ecarebackend.dao.domain.AppUser;
 
@@ -25,6 +26,9 @@ public interface AppUserRepository extends JpaRepository<AppUser, Integer> {
 	
 	@Query("SELECT a FROM AppUser a WHERE a.username=:username")
 	public AppUser getUserByUserName(@Param("username") String username);
+	
+	@Query("SELECT a FROM AppUser a WHERE a.email=:email")
+	public AppUser findByEmail(@Param("email") String email);
 	
 	@Transactional
 	@Query("UPDATE AppUser a SET a.username=:username WHERE a.userId=:userId ")

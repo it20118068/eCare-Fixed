@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from "react";
 import RestService from "../services/RestService";
+import GitHubLoginButton from "../components/GitHubLoginButton";
 
 
 function Login() {
@@ -49,7 +50,18 @@ function Login() {
                     </div>
                     
                 </form>
+                <div className="row d-flex justify-content-center mt-5">
+                    <label htmlFor="">- OR -</label>
+                </div>
+                <div className="row d-flex justify-content-center">
+                    <button class="btn m-3 btn-primary" onClick={()=>window.location.href = 'http://localhost:8885/oauth2/authorization/facebook'}><i class="fa fa-facebook"></i></button>
+                    <button class="btn m-3 btn-primary" onClick={()=>window.location.href = 'http://localhost:8885/oauth2/authorization/google'}><i class="fa fa-google"></i></button>
+                    <button class="btn m-3 btn-primary" onClick={()=>window.location.href = 'http://localhost:8885/oauth2/authorization/github'}><i class="fa fa-github"></i></button>
+                </div>
+
+                
             </div>
+          
         </div>
      );
 }
